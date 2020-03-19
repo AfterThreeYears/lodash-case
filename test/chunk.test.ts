@@ -2,17 +2,14 @@ import _ from 'lodash';
 
 
 function chunk(array: any[], size: number) {
-  const result = [];
-  let draft = [];
+  const length = Math.ceil(array.length / size);
+  const result = Array.from(new Array(length)).map(() => []);
+
   for (let i = 0; i < array.length; i++) {
     const element = array[i];
-    draft.push(element);
-    if (draft.length === size) {
-      result.push(draft);
-      draft = [];
-    }
+    result[Math.floor(i / size)].push(element); 
   }
-  if (draft.length) result.push(draft);
+
   return result;
 }
 
