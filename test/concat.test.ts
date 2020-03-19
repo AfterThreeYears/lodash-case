@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 function concat(array: any[], ...values: any[]) {
-  let result = [...array];
+  const result = [...array];
 
   for (let i = 0; i < values.length; i++) {
     const element = values[i];
