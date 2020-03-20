@@ -7,7 +7,7 @@ function dropRight(array: any[], size: number = 1) {
 
   const result = [];
 
-  for (let i = array.length - size - 1; i >= 0; i--) {
+  for (let i = array.length - size - 1; i > -1; i--) {
     const element = array[i];
     result.unshift(element);
   }
