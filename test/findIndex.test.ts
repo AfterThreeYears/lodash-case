@@ -1,10 +1,11 @@
 import _, { isFunction, isString, isObject } from 'lodash';
 
-type predicate<T> = ((o: T) => boolean) | T | [keyof T, T[keyof T]] | (keyof T);
+export type predicate<T> = ((o: T) => boolean) | T | [keyof T, T[keyof T]] | (keyof T);
 
 function findIndex<T = any>(array: T[], predicate: predicate<T>, fromIndex: number = 0) {
-  let index = -1;
-  for (let i = fromIndex; i < array.length; i++) {
+  let i = fromIndex;
+
+  while (i < array.length) {
     const element = array[i];
     if (
       (isFunction(predicate) && predicate(element))
@@ -12,12 +13,12 @@ function findIndex<T = any>(array: T[], predicate: predicate<T>, fromIndex: numb
       || (isObject(predicate) && _.isEqual(element, predicate))
       || (isString(predicate) && element[predicate as string])
     ) {
-      index = i;
-      break;
+      return i;
     }
+    i++;
   }
 
-  return index;
+  return -1;
 }
 
 test.only('should ', () => {
