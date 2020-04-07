@@ -4,7 +4,7 @@ import { returnValue } from './utils';
 export default function intersection<T = any>(array: T[], otherArray: T[], callback: Function | string = returnValue) {
   const otherCopyArray: T[] = [];
   for (let i = 0; i < otherArray.length; i++) {
-    let element = array[i];
+    let element = otherArray[i];
     if (isFunction(callback)) {
       element = callback(element);
     }
