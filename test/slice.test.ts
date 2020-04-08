@@ -19,4 +19,4 @@ test('should ', () => {
   expect(slice(otherArray, 1, 3)).toEqual([2, 3]);
   expect(slice(otherArray, 1)).toEqual([2, 3, 4]);
   expect(otherArray).toEqual(otherArray);
-})
+});
