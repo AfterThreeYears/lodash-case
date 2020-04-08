@@ -1,20 +1,22 @@
 import _ from 'lodash';
 
-function pull<T>(array: T[], ...values: T[]) {
-  const reulst: T[] = [];
+export default function pull<T>(array: T[], ...values: T[]) {
   for (let i = 0; i < array.length; i++) {
-    const element = array[i];
-    if (!~values.indexOf(element)) {
-      reulst.push(element);
+    if (~values.indexOf(array[i])) {
+      array.splice(i, 1);
+      i--;
     }
   }
-  return reulst;
+  return array;
 }
 
 test('should ', () => {
   const array = ['a', 'b', 'c', 'a', 'b', 'c'];
-  expect(_.pull(array, 'a', 'c')).toEqual(['b', 'b']);
+  _.pull(array, 'a', 'c');
+  expect(array).toEqual(['b', 'b']);
 
-  expect(pull(array, 'a', 'c')).toEqual(['b', 'b']);
+  const otherArray = ['a', 'b', 'c', 'a', 'b', 'c'];
+  pull(otherArray, 'a', 'c');
+  expect(otherArray).toEqual(['b', 'b']);
 })
 
