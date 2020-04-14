@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-type Iteratee<T> = string | ((val: T) => any);
+export type Iteratee<T> = string | ((val: T) => any);
 
 function convert<T>(value: T, iteratee: Iteratee<T>) {
   if (_.isFunction(iteratee)) {
