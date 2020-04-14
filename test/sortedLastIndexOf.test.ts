@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import { sortedIndex, Iteratee } from './sortedIndex.test';
+import { sortedIndex } from './sortedIndex.test';
 
-function sortedLastIndexOf<T>(array: T[], value: T, iteratee: Iteratee<T> = _.identity) {
-  return sortedIndex(array, value, iteratee, true, true);
+function sortedLastIndexOf<T>(array: T[], value: T) {
+  return sortedIndex(array, value, _.identity, true, true, true);
 }
 
 test('should ', () => {

@@ -11,7 +11,14 @@ function convert<T>(value: T, iteratee: Iteratee<T>) {
   return value;
 }
 
-export function sortedIndex<T = number>(array: T[], value: T, iteratee: Iteratee<T> = _.identity, isReverse = false, isLikeIndexOf = false) {
+export function sortedIndex<T = number>(
+  array: T[],
+  value: T,
+  iteratee: Iteratee<T> = _.identity,
+  isReverse = false,
+  isLikeIndexOf = false,
+  isFormLast = false,
+) {
   let start = 0;
   let end = array.length - 1;
   let mid: number;
@@ -29,7 +36,7 @@ export function sortedIndex<T = number>(array: T[], value: T, iteratee: Iteratee
         while (mid < array.length && convert(array[mid + 1], iteratee) === element) {
           mid += 1;
         }
-        mid += 1;
+        if (!isFormLast) mid += 1;
       } else {
         while (mid > 0 && convert(array[mid - 1], iteratee) === element) {
           mid -= 1;
