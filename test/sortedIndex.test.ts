@@ -11,7 +11,7 @@ function convert<T>(value: T, iteratee: Iteratee<T>) {
   return value;
 }
 
-export function sortedIndex<T = number>(array: T[], value: T, iteratee: Iteratee<T> = _.identity, isReverse = false) {
+export function sortedIndex<T = number>(array: T[], value: T, iteratee: Iteratee<T> = _.identity, isReverse = false, isLikeIndexOf = false) {
   let start = 0;
   let end = array.length - 1;
   let mid: number;
@@ -38,7 +38,7 @@ export function sortedIndex<T = number>(array: T[], value: T, iteratee: Iteratee
       return mid;
     }
   }
-  return start;
+  return isLikeIndexOf ? -1 : start;
 }
 
 test('should ', () => {
